@@ -91,7 +91,7 @@ export function Visualization({ data, onBack }: VisualizationProps) {
     switch (chartType) {
       case 'bar':
         return (
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
@@ -105,7 +105,7 @@ export function Visualization({ data, onBack }: VisualizationProps) {
       
       case 'line':
         return (
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
@@ -119,7 +119,7 @@ export function Visualization({ data, onBack }: VisualizationProps) {
       
       case 'pie':
         return (
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={chartData.slice(0, 6)}
@@ -142,7 +142,7 @@ export function Visualization({ data, onBack }: VisualizationProps) {
       
       case 'scatter':
         return (
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height="100%">
             <ScatterChart>
               <CartesianGrid />
               <XAxis type="number" dataKey="x" name={xAxis} />
@@ -158,86 +158,93 @@ export function Visualization({ data, onBack }: VisualizationProps) {
 
   return (
     <Box>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h4" gutterBottom>
+      <Paper elevation={2} sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: { xs: 2, sm: 3 } }}>
+        <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
           Data Visualization
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: { xs: 2, sm: 3 } }}>
           Visualize your processed data and export results
         </Typography>
 
         {/* Stats Summary */}
-        <Grid container spacing={2} sx={{ mb: 3 }}>
-          <Grid item xs={12} sm={6} md={3}>
+        <Grid container spacing={{ xs: 1, sm: 2 }} sx={{ mb: { xs: 2, sm: 3 } }}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Total Records
                 </Typography>
-                <Typography variant="h4">{data.rows.length}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{data.rows.length}</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Columns
                 </Typography>
-                <Typography variant="h4">{data.columns.length}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{data.columns.length}</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Numeric Columns
                 </Typography>
-                <Typography variant="h4">{numericColumns.length}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{numericColumns.length}</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Categorical Columns
                 </Typography>
-                <Typography variant="h4">{categoricalColumns.length}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{categoricalColumns.length}</Typography>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
 
         {/* Chart Configuration */}
-        <Card variant="outlined" sx={{ mb: 3, p: 2 }}>
-          <Typography variant="h6" gutterBottom>
+        <Card variant="outlined" sx={{ mb: { xs: 2, sm: 3 }, p: { xs: 1.5, sm: 2 } }}>
+          <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
             Chart Configuration
           </Typography>
-          <Grid container spacing={2} alignItems="center">
+          <Grid container spacing={{ xs: 1, sm: 2 }} alignItems="center">
             <Grid item xs={12} md={4}>
               <ToggleButtonGroup
                 value={chartType}
                 exclusive
                 onChange={(_, value) => value && setChartType(value)}
                 fullWidth
+                size="small"
+                sx={{
+                  '& .MuiToggleButton-root': {
+                    fontSize: { xs: '0.7rem', sm: '0.875rem' },
+                    px: { xs: 1, sm: 2 },
+                  }
+                }}
               >
                 <ToggleButton value="bar">
-                  <BarChartIcon sx={{ mr: 1 }} /> Bar
+                  <BarChartIcon sx={{ mr: { xs: 0.5, sm: 1 }, fontSize: { xs: 16, sm: 20 } }} /> Bar
                 </ToggleButton>
                 <ToggleButton value="line">
-                  <ShowChart sx={{ mr: 1 }} /> Line
+                  <ShowChart sx={{ mr: { xs: 0.5, sm: 1 }, fontSize: { xs: 16, sm: 20 } }} /> Line
                 </ToggleButton>
                 <ToggleButton value="pie">
-                  <PieChartIcon sx={{ mr: 1 }} /> Pie
+                  <PieChartIcon sx={{ mr: { xs: 0.5, sm: 1 }, fontSize: { xs: 16, sm: 20 } }} /> Pie
                 </ToggleButton>
                 <ToggleButton value="scatter">
-                  <ScatterPlot sx={{ mr: 1 }} /> Scatter
+                  <ScatterPlot sx={{ mr: { xs: 0.5, sm: 1 }, fontSize: { xs: 16, sm: 20 } }} /> Scatter
                 </ToggleButton>
               </ToggleButtonGroup>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={6} md={4}>
               <FormControl fullWidth size="small">
                 <InputLabel>X-Axis</InputLabel>
                 <Select value={xAxis} label="X-Axis" onChange={(e) => setXAxis(e.target.value)}>
@@ -247,7 +254,7 @@ export function Visualization({ data, onBack }: VisualizationProps) {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={6} md={4}>
               <FormControl fullWidth size="small">
                 <InputLabel>Y-Axis</InputLabel>
                 <Select value={yAxis} label="Y-Axis" onChange={(e) => setYAxis(e.target.value)}>
@@ -261,55 +268,58 @@ export function Visualization({ data, onBack }: VisualizationProps) {
         </Card>
 
         {/* Chart Display */}
-        <Paper variant="outlined" sx={{ p: 3, mb: 3 }}>
+        <Paper variant="outlined" sx={{ p: { xs: 1.5, sm: 2, md: 3 }, mb: { xs: 2, sm: 3 } }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-            <Typography variant="h6">
+            <Typography variant="h6" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
               {chartType.charAt(0).toUpperCase() + chartType.slice(1)} Chart
             </Typography>
             <Chip label={`${chartData.length} data points`} size="small" />
           </Box>
-          {renderChart()}
+          <Box sx={{ width: '100%', height: { xs: 250, sm: 300, md: 400 } }}>
+            {renderChart()}
+          </Box>
         </Paper>
 
         {/* Export Options */}
-        <Divider sx={{ my: 3 }} />
-        <Typography variant="h6" gutterBottom>
+        <Divider sx={{ my: { xs: 2, sm: 3 } }} />
+        <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           Export Data
         </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={3}>
+        <Grid container spacing={{ xs: 1, sm: 2 }}>
+          <Grid item xs={6} sm={6} md={3}>
             <Button
               variant="outlined"
               fullWidth
               startIcon={<Download />}
               onClick={() => handleExport('csv')}
+              sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
             >
-              Export as CSV
+              CSV
             </Button>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Button variant="outlined" fullWidth startIcon={<Download />} disabled>
-              Export as Excel
+          <Grid item xs={6} sm={6} md={3}>
+            <Button variant="outlined" fullWidth startIcon={<Download />} disabled sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+              Excel
             </Button>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Button variant="outlined" fullWidth startIcon={<Download />} disabled>
-              Export as JSON
+          <Grid item xs={6} sm={6} md={3}>
+            <Button variant="outlined" fullWidth startIcon={<Download />} disabled sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+              JSON
             </Button>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Button variant="outlined" fullWidth startIcon={<Download />} disabled>
-              Export Chart
+          <Grid item xs={6} sm={6} md={3}>
+            <Button variant="outlined" fullWidth startIcon={<Download />} disabled sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+              Chart
             </Button>
           </Grid>
         </Grid>
 
         {/* Data Summary */}
-        <Box sx={{ mt: 4, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
+        <Box sx={{ mt: { xs: 2, sm: 3, md: 4 }, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
           <Typography variant="subtitle2" gutterBottom>
             Processing Summary
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
             Your data has been successfully processed through all stages: Upload → Preview → Manipulation → Augmentation → Visualization. 
             You can now export your processed dataset or create additional visualizations.
           </Typography>
@@ -317,12 +327,14 @@ export function Visualization({ data, onBack }: VisualizationProps) {
       </Paper>
 
       {/* Navigation */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 2, sm: 0 } }}>
         <Button
           variant="outlined"
           size="large"
           startIcon={<NavigateBefore />}
           onClick={onBack}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Back
         </Button>
@@ -332,6 +344,8 @@ export function Visualization({ data, onBack }: VisualizationProps) {
           color="success"
           startIcon={<Download />}
           onClick={() => handleExport('csv')}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Download Results
         </Button>

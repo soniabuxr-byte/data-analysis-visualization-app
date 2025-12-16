@@ -181,27 +181,27 @@ export function DataManipulation({ data, onUpdate, onNext, onBack }: DataManipul
 
   return (
     <Box>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h4" gutterBottom>
+      <Paper elevation={2} sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: { xs: 2, sm: 3 } }}>
+        <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
           Data Manipulation
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: { xs: 2, sm: 3 } }}>
           Filter, sort, and transform your data
         </Typography>
 
         {/* Action Cards */}
-        <Grid container spacing={2} sx={{ mb: 3 }}>
-          <Grid item xs={12} sm={6} md={3}>
+        <Grid container spacing={{ xs: 1, sm: 2 }} sx={{ mb: { xs: 2, sm: 3 } }}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card 
               variant="outlined" 
               sx={{ cursor: 'pointer', '&:hover': { bgcolor: 'action.hover' } }}
               onClick={() => setShowFilterDialog(true)}
             >
-              <CardContent>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <FilterList color="primary" />
+                  <FilterList color="primary" sx={{ fontSize: { xs: 20, sm: 24 } }} />
                   <Box>
-                    <Typography variant="subtitle1">Filtering</Typography>
+                    <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>Filtering</Typography>
                     <Typography variant="caption" color="text.secondary">
                       {filters.length} active
                     </Typography>
@@ -210,17 +210,17 @@ export function DataManipulation({ data, onUpdate, onNext, onBack }: DataManipul
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card 
               variant="outlined"
               sx={{ cursor: 'pointer', '&:hover': { bgcolor: 'action.hover' } }}
               onClick={() => setShowColumnDialog(true)}
             >
-              <CardContent>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Sort color="primary" />
+                  <Sort color="primary" sx={{ fontSize: { xs: 20, sm: 24 } }} />
                   <Box>
-                    <Typography variant="subtitle1">Columns</Typography>
+                    <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>Columns</Typography>
                     <Typography variant="caption" color="text.secondary">
                       {selectedColumns.length} selected
                     </Typography>
@@ -229,17 +229,17 @@ export function DataManipulation({ data, onUpdate, onNext, onBack }: DataManipul
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card 
               variant="outlined"
               sx={{ cursor: 'pointer', '&:hover': { bgcolor: 'action.hover' } }}
               onClick={() => setShowTransformDialog(true)}
             >
-              <CardContent>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Functions color="primary" />
+                  <Functions color="primary" sx={{ fontSize: { xs: 20, sm: 24 } }} />
                   <Box>
-                    <Typography variant="subtitle1">Transform</Typography>
+                    <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>Transform</Typography>
                     <Typography variant="caption" color="text.secondary">
                       Apply functions
                     </Typography>
@@ -248,13 +248,13 @@ export function DataManipulation({ data, onUpdate, onNext, onBack }: DataManipul
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Box>
-                    <Typography variant="subtitle1">Result</Typography>
-                    <Typography variant="h6" color="primary">
+                    <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>Result</Typography>
+                    <Typography variant="h6" color="primary" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                       {workingData.rows.length} rows
                     </Typography>
                   </Box>
@@ -285,7 +285,7 @@ export function DataManipulation({ data, onUpdate, onNext, onBack }: DataManipul
         )}
 
         {/* Data Table */}
-        <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: 400 }}>
+        <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: { xs: 300, sm: 400 }, overflowX: 'auto' }}>
           <Table size="small" stickyHeader>
             <TableHead>
               <TableRow sx={{ bgcolor: 'grey.100' }}>
@@ -441,12 +441,14 @@ export function DataManipulation({ data, onUpdate, onNext, onBack }: DataManipul
       </Dialog>
 
       {/* Navigation */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 2, sm: 0 } }}>
         <Button
           variant="outlined"
           size="large"
           startIcon={<NavigateBefore />}
           onClick={onBack}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Back
         </Button>
@@ -455,6 +457,8 @@ export function DataManipulation({ data, onUpdate, onNext, onBack }: DataManipul
           size="large"
           endIcon={<NavigateNext />}
           onClick={handleApplyChanges}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Continue to Augmentation
         </Button>

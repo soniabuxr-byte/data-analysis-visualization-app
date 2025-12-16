@@ -172,43 +172,43 @@ export function DataAugmentation({ data, onUpdate, onNext, onBack }: DataAugment
 
   return (
     <Box>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Typography variant="h4" gutterBottom>
+      <Paper elevation={2} sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: { xs: 2, sm: 3 } }}>
+        <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
           Data Augmentation
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: { xs: 2, sm: 3 } }}>
           Use AI-powered tools to enhance and expand your dataset
         </Typography>
 
         {/* Summary */}
-        <Grid container spacing={2} sx={{ mb: 3 }}>
-          <Grid item xs={12} sm={6} md={4}>
+        <Grid container spacing={{ xs: 1, sm: 2 }} sx={{ mb: { xs: 2, sm: 3 } }}>
+          <Grid item xs={6} sm={6} md={4}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Current Rows
                 </Typography>
-                <Typography variant="h4">{data.rows.length}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{data.rows.length}</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={6} sm={6} md={4}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Active Augmentations
                 </Typography>
-                <Typography variant="h4">{enabledCount}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{enabledCount}</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Card variant="outlined" sx={{ bgcolor: augmentationComplete ? 'success.light' : 'background.paper' }}>
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Status
                 </Typography>
-                <Typography variant="h6">
+                <Typography variant="h6" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                   {augmentationComplete ? 'Complete' : 'Ready'}
                 </Typography>
               </CardContent>
@@ -217,7 +217,7 @@ export function DataAugmentation({ data, onUpdate, onNext, onBack }: DataAugment
         </Grid>
 
         {/* Augmentation Options */}
-        <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
+        <Typography variant="h6" gutterBottom sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           Augmentation Options
         </Typography>
         
@@ -310,8 +310,8 @@ export function DataAugmentation({ data, onUpdate, onNext, onBack }: DataAugment
         )}
 
         {/* AI Insights */}
-        <Divider sx={{ my: 3 }} />
-        <Typography variant="h6" gutterBottom>
+        <Divider sx={{ my: { xs: 2, sm: 3 } }} />
+        <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           AI Recommendations
         </Typography>
         <Card variant="outlined">
@@ -350,12 +350,14 @@ export function DataAugmentation({ data, onUpdate, onNext, onBack }: DataAugment
       </Paper>
 
       {/* Navigation */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 2, sm: 0 } }}>
         <Button
           variant="outlined"
           size="large"
           startIcon={<NavigateBefore />}
           onClick={onBack}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Back
         </Button>
@@ -364,6 +366,8 @@ export function DataAugmentation({ data, onUpdate, onNext, onBack }: DataAugment
           size="large"
           endIcon={<NavigateNext />}
           onClick={onNext}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Continue to Visualization
         </Button>

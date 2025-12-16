@@ -6,7 +6,7 @@ import { DataPreview } from './components/DataPreview';
 import { DataManipulation } from './components/DataManipulation';
 import { DataAugmentation } from './components/DataAugmentation';
 import { Visualization } from './components/Visualization';
-import { Box, Stepper, Step, StepLabel, Container, Paper } from '@mui/material';
+import { Box, Stepper, Step, StepLabel, Container, Paper, useMediaQuery } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -32,6 +32,7 @@ export interface DataState {
 function App() {
   const [activeStep, setActiveStep] = useState(0);
   const [data, setData] = useState<DataState>({ columns: [], rows: [] });
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const steps = [
     'Upload Data',
@@ -92,10 +93,19 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ bgcolor: '#f5f5f5', minHeight: '100vh', py: 4 }}>
-        <Container maxWidth="lg">
-          <Paper elevation={0} sx={{ p: 3, mb: 3 }}>
-            <Stepper activeStep={activeStep} alternativeLabel>
+      <Box sx={{ bgcolor: '#f5f5f5', minHeight: '100vh', py: { xs: 2, sm: 3, md: 4 } }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+          <Paper elevation={0} sx={{ p: { xs: 2, sm: 3 }, mb: { xs: 2, sm: 3 } }}>
+            <Stepper 
+              activeStep={activeStep} 
+              alternativeLabel={!isMobile}
+              orientation={isMobile ? 'vertical' : 'horizontal'}
+              sx={{
+                '& .MuiStepLabel-label': {
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                },
+              }}
+            >
               {steps.map((label) => (
                 <Step key={label}>
                   <StepLabel>{label}</StepLabel>

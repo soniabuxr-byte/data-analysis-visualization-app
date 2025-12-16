@@ -172,11 +172,11 @@ export function DataUpload({ onUpload }: DataUploadProps) {
   };
 
   return (
-    <Paper elevation={2} sx={{ p: 4 }}>
-      <Typography variant="h4" gutterBottom>
+    <Paper elevation={2} sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+      <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
         Upload Your Data
       </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: { xs: 2, sm: 3, md: 4 } }}>
         Upload your dataset to begin analysis. We support CSV files.
       </Typography>
 
@@ -188,15 +188,15 @@ export function DataUpload({ onUpload }: DataUploadProps) {
           border: '2px dashed',
           borderColor: isDragging ? 'primary.main' : 'grey.300',
           borderRadius: 2,
-          p: 6,
+          p: { xs: 3, sm: 4, md: 6 },
           textAlign: 'center',
           bgcolor: isDragging ? 'action.hover' : 'background.paper',
           transition: 'all 0.2s',
           cursor: 'pointer',
-          mb: 3,
+          mb: { xs: 2, sm: 3 },
         }}
       >
-        <CloudUpload sx={{ fontSize: 64, color: 'primary.main', mb: 2 }} />
+        <CloudUpload sx={{ fontSize: { xs: 48, sm: 56, md: 64 }, color: 'primary.main', mb: 2 }} />
         <Typography variant="h6" gutterBottom>
           Drag & drop your CSV file here
         </Typography>
@@ -286,7 +286,7 @@ export function DataUpload({ onUpload }: DataUploadProps) {
         </Button>
       </Box>
 
-      <Box sx={{ mt: 4, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
+      <Box sx={{ mt: { xs: 2, sm: 3, md: 4 }, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
         <Typography variant="subtitle2" gutterBottom>
           Supported File Formats
         </Typography>

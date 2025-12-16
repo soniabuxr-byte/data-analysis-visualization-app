@@ -77,13 +77,20 @@ export function DataPreview({ data, onNext, onBack }: DataPreviewProps) {
 
   return (
     <Box>
-      <Paper elevation={2} sx={{ p: 4, mb: 3 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+      <Paper elevation={2} sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: { xs: 2, sm: 3 } }}>
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between', 
+          alignItems: { xs: 'flex-start', sm: 'center' }, 
+          gap: { xs: 2, sm: 0 },
+          mb: { xs: 2, sm: 3 } 
+        }}>
           <Box>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
               Data Preview
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
               {data.fileName || 'Dataset'} • {data.rows.length} rows × {data.columns.length} columns
             </Typography>
           </Box>
@@ -91,49 +98,49 @@ export function DataPreview({ data, onNext, onBack }: DataPreviewProps) {
         </Box>
 
         {/* Summary Statistics */}
-        <Typography variant="h6" gutterBottom sx={{ mt: 3, mb: 2 }}>
+        <Typography variant="h6" gutterBottom sx={{ mt: { xs: 2, sm: 3 }, mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           Dataset Overview
         </Typography>
-        <Grid container spacing={2} sx={{ mb: 3 }}>
-          <Grid item xs={12} sm={6} md={3}>
+        <Grid container spacing={{ xs: 1, sm: 2 }} sx={{ mb: { xs: 2, sm: 3 } }}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Total Rows
                 </Typography>
-                <Typography variant="h4">{data.rows.length}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{data.rows.length}</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Total Columns
                 </Typography>
-                <Typography variant="h4">{data.columns.length}</Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>{data.columns.length}</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Numeric Columns
                 </Typography>
-                <Typography variant="h4">
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
                   {data.columns.filter(col => getColumnStats(col).type === 'numeric').length}
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Card variant="outlined">
-              <CardContent>
-                <Typography color="text.secondary" gutterBottom>
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
+                <Typography color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   Categorical Columns
                 </Typography>
-                <Typography variant="h4">
+                <Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
                   {data.columns.filter(col => getColumnStats(col).type === 'categorical').length}
                 </Typography>
               </CardContent>
@@ -142,16 +149,16 @@ export function DataPreview({ data, onNext, onBack }: DataPreviewProps) {
         </Grid>
 
         {/* Column Statistics */}
-        <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
+        <Typography variant="h6" gutterBottom sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           Column Statistics
         </Typography>
-        <Grid container spacing={2} sx={{ mb: 3 }}>
+        <Grid container spacing={{ xs: 1, sm: 2 }} sx={{ mb: { xs: 2, sm: 3 } }}>
           {data.columns.slice(0, 4).map(column => {
             const stats = getColumnStats(column);
             return (
-              <Grid item xs={12} sm={6} md={3} key={column}>
+              <Grid item xs={6} sm={6} md={3} key={column}>
                 <Card variant="outlined">
-                  <CardContent>
+                  <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
                       <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
                         {column}
@@ -188,10 +195,10 @@ export function DataPreview({ data, onNext, onBack }: DataPreviewProps) {
         </Grid>
 
         {/* Data Table */}
-        <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
+        <Typography variant="h6" gutterBottom sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           Data Sample
         </Typography>
-        <TableContainer component={Paper} variant="outlined">
+        <TableContainer component={Paper} variant="outlined" sx={{ overflowX: 'auto' }}>
           <Table size="small">
             <TableHead>
               <TableRow sx={{ bgcolor: 'grey.100' }}>
@@ -233,12 +240,14 @@ export function DataPreview({ data, onNext, onBack }: DataPreviewProps) {
       </Paper>
 
       {/* Navigation */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 2, sm: 0 } }}>
         <Button
           variant="outlined"
           size="large"
           startIcon={<NavigateBefore />}
           onClick={onBack}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Back
         </Button>
@@ -247,6 +256,8 @@ export function DataPreview({ data, onNext, onBack }: DataPreviewProps) {
           size="large"
           endIcon={<NavigateNext />}
           onClick={onNext}
+          fullWidth
+          sx={{ width: { sm: 'auto' } }}
         >
           Continue to Manipulation
         </Button>
