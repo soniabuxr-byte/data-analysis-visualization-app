@@ -1,0 +1,52 @@
+id,name,age,salary,department,performance_score,years_experience,city,hire_date,is_active
+1,Emma Johnson,28,72000,Engineering,8.5,4,San Francisco,2020-03-15,true
+2,Liam Chen,34,95000,Engineering,9.2,8,Seattle,2016-07-22,true
+3,Olivia Martinez,29,68000,Marketing,7.8,3,New York,2021-01-10,true
+4,Noah Williams,45,125000,Management,8.9,15,Chicago,2009-05-18,true
+5,Ava Thompson,31,78000,Data Science,8.7,5,Austin,2019-08-20,true
+6,Ethan Garcia,27,65000,Engineering,7.5,2,Denver,2022-02-14,true
+7,Sophia Anderson,38,98000,Product,9.1,10,Boston,2014-11-30,true
+8,Mason Brown,26,58000,Marketing,6.9,1,Portland,2023-04-05,true
+9,Isabella Davis,33,85000,Data Science,8.3,6,Los Angeles,2018-09-12,true
+10,Lucas Wilson,42,110000,Management,9.0,12,San Francisco,2012-06-25,true
+11,Mia Rodriguez,30,73000,Engineering,8.1,4,Seattle,2020-01-08,true
+12,Alexander Lee,36,92000,Product,8.6,9,New York,2015-03-17,true
+13,Charlotte Taylor,25,55000,Marketing,7.2,1,Austin,2023-07-21,true
+14,Benjamin Moore,39,105000,Engineering,9.3,11,Chicago,2013-10-04,true
+15,Amelia Jackson,32,81000,Data Science,8.4,5,Denver,2019-12-19,true
+16,Daniel White,28,69000,Engineering,7.7,3,Boston,2021-05-28,true
+17,Harper Harris,44,118000,Management,8.8,14,Portland,2010-08-09,true
+18,James Martin,29,72000,Product,7.9,4,Los Angeles,2020-02-11,true
+19,Evelyn Thompson,35,88000,Engineering,8.5,7,San Francisco,2017-04-23,true
+20,Michael Clark,41,102000,Data Science,9.0,10,Seattle,2014-07-16,true
+21,Abigail Lewis,27,63000,Marketing,7.4,2,New York,2022-06-03,true
+22,William Walker,33,79000,Engineering,8.2,5,Austin,2019-09-27,true
+23,Emily Hall,30,74000,Product,8.0,4,Chicago,2020-11-15,true
+24,Sebastian Allen,48,135000,Management,9.4,18,Denver,2006-02-20,true
+25,Elizabeth Young,31,77000,Data Science,8.1,4,Boston,2020-08-07,true
+26,Joseph King,24,52000,Engineering,7.0,0,Portland,2024-01-15,true
+27,Sofia Wright,37,96000,Product,8.8,9,Los Angeles,2015-05-11,true
+28,David Scott,40,108000,Engineering,9.1,12,San Francisco,2012-03-28,true
+29,Victoria Green,26,61000,Marketing,7.3,2,Seattle,2022-09-09,true
+30,Henry Adams,34,84000,Data Science,8.3,6,New York,2018-06-14,true
+31,Scarlett Baker,29,70000,Engineering,7.8,3,Austin,2021-04-22,true
+32,Andrew Nelson,43,115000,Management,8.9,13,Chicago,2011-12-01,true
+33,Grace Carter,28,67000,Product,7.6,3,Denver,2021-07-19,true
+34,Jackson Mitchell,35,91000,Engineering,8.6,8,Boston,2016-10-06,true
+35,Chloe Roberts,32,82000,Data Science,8.4,5,Portland,2019-01-31,true
+36,Owen Turner,38,99000,Product,8.7,10,Los Angeles,2014-04-12,true
+37,Lily Phillips,25,54000,Marketing,6.8,1,San Francisco,2023-08-25,true
+38,Samuel Campbell,46,128000,Management,9.2,16,Seattle,2008-09-07,true
+39,Zoe Parker,30,76000,Engineering,8.0,4,New York,2020-06-18,true
+40,Jack Evans,36,93000,Data Science,8.5,8,Austin,2016-02-29,true
+41,Penelope Edwards,27,64000,Marketing,7.4,2,Chicago,2022-03-10,true
+42,Luke Collins,33,86000,Engineering,8.2,6,Denver,2018-11-24,true
+43,Hannah Stewart,31,79000,Product,8.1,5,Boston,2019-05-03,true
+44,Gabriel Sanchez,42,112000,Management,9.0,11,Portland,2013-08-16,true
+45,Nora Morris,29,71000,Data Science,7.9,4,Los Angeles,2020-10-29,true
+46,Carter Rogers,24,51000,Engineering,6.9,0,San Francisco,2024-02-05,true
+47,Addison Reed,39,104000,Product,8.9,11,Seattle,2013-06-21,true
+48,Leo Cook,37,97000,Engineering,8.7,9,New York,2015-01-14,true
+49,Stella Morgan,28,66000,Marketing,7.5,2,Austin,2022-05-17,true
+50,Wyatt Bailey,47,132000,Management,9.3,17,Chicago,2007-11-08,true
+
